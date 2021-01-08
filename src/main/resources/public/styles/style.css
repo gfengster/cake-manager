@@ -1,0 +1,19 @@
+/*
+ * author gfeng
+ */
+ 
+@charset "UTF-8";
+th {
+	text-align:center;
+    font-size:1.3vw;
+}
+
+td {
+    text-align:left;
+    font-size:1.3vw;
+    white-space: initial;
+}
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: "\25B4\25BE" 
+}
