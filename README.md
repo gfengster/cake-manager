@@ -1,30 +1,54 @@
 # Cake Manager with SpringBoot
-1. Install Java 1.8, Maven, git, docker.
-2. Check out the code 
-<br><code>`git clone https://github.com/gfengster/spring-boot-sales.git`</code>
-4. Compile the project
-In a terminal, change path to the project.
-<br><code>`mvn clean package`</code>
-5. Run the project
-<br><code>`java -jar ./target/demo-0.0.1-SNAPSHOT.jar`</code>
-6. In web browser
-<br>http://localhost:8080
-7. In menu panel
-  - Stock -- shows the current level
-  - Sale -- can submit a sale, and result the sale status.
-  - Sale History -- shows all sale event in history
-  - Rule -- shows the sale rule on each product.
-8.Data in database
-H2 database with memory mode is used. Tables could be viewed via
-<br>http://localhost:8080/h2
-<br>jdbc url is "jdbc:h2:mem:test"
+## Prerequisite Software
+ Install Java 1.8, Maven, git, docker.
+ 
+## Check out the code 
+ Using git: `git clone https://github.com/gfengster/cake-manager.git`<br>
+ Download zip: `https://github.com/gfengster/cake-manager/archive/main.zip`
 
-## H2 Run the demo in a docker container
-1. Install docker, Java, Maven
-2. Check out the project as above step 3.
-4. Build project
-<br><code>`mvn clean package`</code>
-3. Build image
-<br><code>`docker build --tag gfsaledemo:latest .`</code>
-4. Run a container
-<br><code>`docker run -p 8080:8080 gfsaledemo`</code>
+## Build and run in local machine
+1. Test, build and pack the project
+In a terminal, change path to the project.<br>
+ `mvn clean test package`
+2. Run the application<br>
+`java -jar ./target/cake-manager.jar`
+
+## Build and run docker in local machine
+1. Test, build and pack the project
+In a terminal, change path to the project.<br>
+ `mvn clean test package`
+2. Build docker image<br>
+`docker build --tag cake-manager:latest .`
+3. Run a container<br>
+`docker run -p 8080:8080 -p 18080:18080 cake-manager` 
+
+## CI/CD with GitHub
+The project source code is hosted in GitHub. CI/CD has been configured in workflows.
+Changing code could trigger CI workflow, which test, build the project. If succeeded, docker image will be created and deployed to DockerHub(`https://hub.docker.com`).<br>
+CI/CD could be triggered manually.
+1. Pull docker image built in GitHub from DockerHub<br>
+`docker pull registry.hub.docker.com/gfengster/cake-manager:latest`
+2. Create a container and run the application<br>
+`docker run -p 8080:8080 -p 18080:18080 gfengster/cake-manager`
+
+## Using the application
+1. List all cakes in table with browser<br>
+`http://localhost:8080`
+2. Retrieve all cakes in JSON format<br>
+`http://localhost:8080/cakes`
+3. Retrieve a cake with id in JSON format<br>
+`http://localhost:8080/cakes/{id}`<br>
+For example<br>
+`http://localhost:8080/cakes/2`
+4. Create a cake with browser<br>
+`http://www.localhost:8080/create`
+5. Create a cake with curl<br>
+`echo '{"title":"GFeng cake","desc":"My favourite cake is self made","image":"https://content.sponge.co.uk/sponge-heroes/_conceptHeroWide1x/Vegan-main-concpets2.jpg"}' | curl -X POST -d @-  http://localhost:8080/cakes --header "Content-Type:application/json"`
+6. Check the created cake in browser<br>
+`http://localhost:8080`
+7. Cakes list can be viewed from database directly in browser if the application run in local machine<br>
+`http://localhost:8080/h2`
+8. View SpringBoot actuator, which shows application internal information.<br>
+`http://localhost:18080/actuator/`<br>
+`http://localhost:18080/actuator/health`<br>
+`http://localhost:18080/actuator/info`

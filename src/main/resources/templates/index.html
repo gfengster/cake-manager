@@ -30,7 +30,7 @@
 							<td th:text="${cake.id}"></td>
 							<td th:text="${cake.title}"></td>
 							<td th:text="${cake.desc}"></td>
-							<td th:text="${cake.image}"></td>
+							<td><a th:href="${cake.image}" target="_blank"><span th:text="${cake.image}"></span></a></td>
 						</tr>
 					</tbody>
 				</table>
