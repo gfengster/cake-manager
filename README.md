@@ -18,7 +18,7 @@ In a terminal, change path to the project.<br>
 In a terminal, change path to the project.<br>
  `mvn clean test package`
 2. Build docker image<br>
-`docker build --tag cake-manager:latest .`
+`docker build --tag cake-manager:thymeleaf .`
 3. Run a container<br>
 `docker run -p 8080:8080 -p 18080:18080 cake-manager` 
 
@@ -29,7 +29,7 @@ CI/CD could be triggered manually.
 1. The auto built docker image location<br>
 [https://hub.docker.com/repository/docker/gfengster/cake-manager](https://hub.docker.com/repository/docker/gfengster/cake-manager)
 2. Pull docker image built in GitHub from DockerHub<br>
-`docker pull registry.hub.docker.com/gfengster/cake-manager:latest`
+`docker pull registry.hub.docker.com/gfengster/cake-manager:thymeleaf`
 3. Create a container and run the application<br>
 `docker run -p 8080:8080 -p 18080:18080 gfengster/cake-manager`
 
