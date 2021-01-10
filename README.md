@@ -34,6 +34,7 @@ CI/CD could be triggered manually.
 `docker run -p 8080:8080 -p 18080:18080 gfengster/cake-manager`
 
 ## Using the application
+Note: Before run the application make sure port 8080, 18080 are free.
 1. List all cakes in table with browser<br>
 [http://localhost:8080](http://localhost:8080)
 2. Retrieve all cakes in JSON format<br>
