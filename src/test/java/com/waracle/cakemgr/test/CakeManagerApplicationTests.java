@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.waracle.cakemgr.controller.CakeController;
 import com.waracle.cakemgr.controller.CakeRestApi;
 import com.waracle.cakemgr.model.CakeEntity;
 import com.waracle.cakemgr.repostory.CakeRepository;
@@ -21,9 +20,6 @@ import com.waracle.cakemgr.service.CakeService;
 
 @SpringBootTest
 class CakeManagerApplicationTests {
-	
-	@Autowired
-	private CakeController controller;
 	
 	@Autowired
 	private CakeRestApi restApi;
@@ -47,7 +43,6 @@ class CakeManagerApplicationTests {
 	
 	@Test
 	void contextLoads() {
-		assertThat(controller).isNotNull();
 		assertThat(restApi).isNotNull();
 		assertThat(repo).isNotNull();
 		assertThat(service).isNotNull();

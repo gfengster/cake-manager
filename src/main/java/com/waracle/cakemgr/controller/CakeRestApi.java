@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +34,14 @@ public class CakeRestApi {
 		return list;
 	}
 	
-	@PostMapping(path="/cakes", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+	@PostMapping(path="/cakes", consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
 	public CakeEntity creatCake(@RequestBody final CakeEntity cake) {
+		
+		if (ObjectUtils.isEmpty(cake.getTitle()) || ObjectUtils.isEmpty(cake.getDesc())
+				|| ObjectUtils.isEmpty(cake.getImage())) {
+			throw new RuntimeException("Cake has empty field.");
+		}
+		
 		final CakeEntity newCake = service.createCake(cake);
 
 		return newCake;

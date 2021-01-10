@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<link rel="stylesheet" href="styles/all.css">
+<link rel="stylesheet" href="styles/style.css">
+<script src="script/sorttable.js"></script>
+<script src="script/cakemgr.js"></script>
+<body>
+	<div ng-app="myApp" ng-controller="tableCtrl">
+		<table class="table table-striped table-responsive-md sortable">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Image</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in cakes">
+					<td>{{ x.id }}</td>
+					<td>{{ x.title }}</td>
+					<td>{{ x.desc }}</td>
+					<td><a href="{{ x.image }}" target="_blank">{{ x.image }}</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>
