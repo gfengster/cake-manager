@@ -20,7 +20,7 @@ In a terminal, change path to the project.<br>
 2. Build docker image<br>
 `docker build --tag cake-manager:thymeleaf .`
 3. Run a container<br>
-`docker run -p 8080:8080 -p 18080:18080 cake-manager` 
+`docker run -p 8080:8080 -p 18080:18080 cake-manager:thymeleaf` 
 
 ## CI/CD with GitHub
 The project source code is hosted in GitHub. CI/CD has been configured in workflows.
@@ -31,7 +31,7 @@ CI/CD could be triggered manually.
 2. Pull docker image built in GitHub from DockerHub<br>
 `docker pull gfengster/cake-manager:thymeleaf`
 3. Create a container and run the application<br>
-`docker run -p 8080:8080 -p 18080:18080 gfengster/cake-manager`
+`docker run -p 8080:8080 -p 18080:18080 gfengster/cake-manager:thymeleaf`
 
 ## Using the application
 Note: Before run the application make sure port 8080, 18080 are free.
