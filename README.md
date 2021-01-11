@@ -44,7 +44,7 @@ Note: Before run the application make sure port 8080, 18080 are free.
 For example<br>
 [http://localhost:8080/cakes/2](http://localhost:8080/cakes/2)
 4. Create a cake with browser<br>
-[http://www.localhost:8080/create](http://www.localhost:8080/create)
+[http://www.localhost:8080/create.html](http://www.localhost:8080/create.html)
 5. Create a cake with curl in terminal<br>
 `echo '{"title":"GFeng cake","desc":"My favourite cake is self made","image":"https://content.sponge.co.uk/sponge-heroes/_conceptHeroWide1x/Vegan-main-concpets2.jpg"}' | curl -X POST -d @-  http://localhost:8080/cakes --header "Content-Type:application/json"`
 6. Check the created cake in browser<br>
